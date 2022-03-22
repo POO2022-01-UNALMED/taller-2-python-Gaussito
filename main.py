@@ -26,7 +26,6 @@ class Motor:
 
 
 class Auto:
-    cantidadCreados = 0
 
     def __init__(self, modelo, precio, asientos, marca, motor, registro):
         self.modelo = modelo
@@ -35,11 +34,13 @@ class Auto:
         self.marca = marca
         self.motor = motor
         self.registro = registro
-        Auto.cantidadCreados += 1
 
-    @classmethod
-    def cantidadAsientos(cls):
-        return cls.cantidadCreados
+    def cantidadAsientos(self):
+        cantidadAsientos = 0
+        for asiento in self.asientos:
+            if asiento:
+                cantidadAsientos += 1
+        return cantidadAsientos
 
     def verificarIntegridad(self):
         for asiento in self.asientos:
